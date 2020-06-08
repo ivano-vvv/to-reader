@@ -1,0 +1,25 @@
+.categories-filter__item {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #000;
+}
+
+.categories-filter__item:hover {
+    color: rgb(70, 70, 70);
+}
+
+.categories-filter__item_active {
+    color: rgb(141, 141, 141);
+}
+
+
+.categories-filter__divider {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #000;
+  margin: 0 20px;
+}

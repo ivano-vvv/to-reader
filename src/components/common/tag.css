@@ -1,0 +1,72 @@
+.tag {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: black;
+  box-sizing: border-box;
+  padding: 10px 18px;
+  border-radius: 4px;
+  border: 2px solid #000000;
+}
+
+.tag-button {
+  background: none;
+  cursor: pointer;
+}
+
+.tag-button:hover {
+  background: #e4e4e4;
+}
+
+.tag-button:focus {
+  outline: none;
+}
+
+.tag_923535 {
+  border: 2px solid #975134;
+}
+
+.tag_624C7D {
+  border: 2px solid #624c7d;
+}
+
+.tag_4C7845 {
+  border: 2px solid #4c7845;
+}
+
+.tag_975134 {
+  border: 2px solid #975134;
+}
+
+.tag_507B0A {
+  border: 2px solid #507b0a;
+}
+
+.tag_1A2484 {
+  border: 2px solid #1a2484;
+}
+
+.tag_196A6A {
+  border: 2px solid #196a6a;
+}
+
+.tag_773665 {
+  border: 2px solid #773665;
+}
+
+.tag_397487 {
+  border: 2px solid #397487;
+}
+
+.tag_976E31 {
+  border: 2px solid #976e31;
+}
+
+.tag-row__tag {
+  margin-right: 16px;
+}
+
+.tag-row__tag:last-child {
+  margin-right: 20px;
+}

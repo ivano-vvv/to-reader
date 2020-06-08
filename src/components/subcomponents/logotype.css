@@ -1,0 +1,10 @@
+.logotype {
+  font-family: "Jost", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.logotype_header {
+    font-size: 42px;
+    color: #000;
+}

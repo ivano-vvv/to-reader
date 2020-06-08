@@ -1,0 +1,16 @@
+.content {
+  margin-top: 104px;
+}
+
+.articles-masonry-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  margin-left: -24px;
+}
+
+.articles-masonry-grid__column {
+  padding-left: 24px; /* gutter size */
+  background-clip: padding-box;
+}
