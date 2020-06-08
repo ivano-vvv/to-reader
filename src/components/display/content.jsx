@@ -5,13 +5,12 @@ import ArticleCard from "./subcomponents/article-card";
 import Masonry from "react-masonry-css";
 
 export default function Content(props) {
-
   return (
     <div className="content container">
       <Masonry
-      breakpointCols={3}
-      className='articles-masonry-grid'
-      columnClassName='articles-masonry-grid__column'
+        breakpointCols={3}
+        className="articles-masonry-grid"
+        columnClassName="articles-masonry-grid__column"
       >
         {props.articlesPack.map((a) => {
           return (
