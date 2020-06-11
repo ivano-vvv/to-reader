@@ -1,9 +1,13 @@
 import { createStore, combineReducers } from "redux";
 import articlesReducer from "./reducers/articleReducer";
+import previewCardReducer from "./reducers/previewCardReducer";
+import { reducer as formReducer } from 'redux-form';
 
 let reducers = combineReducers({
-    articlesPack: articlesReducer,
-})
+  articlesPack: articlesReducer,
+  previewCardData: previewCardReducer,
+  form: formReducer,
+});
 
 let store = createStore(reducers);
 

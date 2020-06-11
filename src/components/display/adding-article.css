@@ -1,0 +1,7 @@
+.adding-article {
+    margin-top: 104px;
+    margin-bottom: 104px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}

@@ -1,0 +1,105 @@
+/* blocks */
+
+.add-article-form__main-info {
+  margin-top: 51px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.add-article-form__first-list-block {
+  margin-top: 57px;
+}
+
+.add-article-form__buttons-block {
+  margin-top: 120px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-article-form__title-block {
+  margin-bottom: 41px;
+}
+
+/* labels */
+
+.add-article-form__label {
+  margin-bottom: 29px;
+  display: block;
+}
+
+.add-article-form__oneline-label {
+  margin-bottom: 13px;
+}
+
+.add-article-form__first-list-label {
+  display: inline;
+  margin-left: 12px;
+}
+
+.add-article-form__cover-preview {
+  margin-bottom: 28px;
+}
+
+/* inputs */
+
+.add-article-form__link-input {
+  width: 660px;
+}
+
+.add-article-form__title-input {
+  width: 322px;
+}
+
+.add-article-form__desc-input {
+  width: 322px;
+}
+
+.add-article-form__cover-link-input {
+  width: 240px;
+}
+
+/* buttons */
+
+.add-article-form__button {
+  border-radius: 4px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.add-article-form__button_cancel {
+  background: #cecece;
+  padding: 12px 32px;
+  margin-right: 12px;
+}
+
+.add-article-form__button:focus {
+  box-shadow: 0px 4px 12px rgba(169, 169, 169, 0.25);
+  outline: none;
+}
+
+.add-article-form__button_cancel:hover {
+  background-color: #a1a1a1;
+}
+
+.add-article-form__button_cancel:active {
+  background-color: #696969;
+}
+.add-article-form__button_save {
+  background: #3477b4;
+  padding: 12px 50px;
+}
+
+.add-article-form__button_save:hover {
+  background-color: #5d95ca;
+}
+
+.add-article-form__button_save:active {
+  background-color: #024483;
+}

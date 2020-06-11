@@ -1,4 +1,4 @@
-const articleList = [
+const articlesPack = [
   {
     id: 1,
     title:

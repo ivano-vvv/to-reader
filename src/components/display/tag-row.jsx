@@ -1,6 +1,6 @@
 import React from "react";
 import "./tag-row.css";
-import Tag from "../common/tag";
+import Tag from "./common/tag";
 
 export default function TagRow(props) {
   let tags = [
