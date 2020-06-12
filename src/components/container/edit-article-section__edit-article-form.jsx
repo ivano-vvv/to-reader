@@ -2,6 +2,8 @@ import React from "react";
 import EditArticleForm from "../display/edit-article-form";
 import { useDispatch } from "react-redux";
 import { deleteArticle } from "../../redux/reducers/articleReducer";
+import { reduxForm } from "redux-form";
+import { createTags } from "../../redux/reducers/tagsReducer";
 
 export default function EditArticleFormContainer(props) {
   const dispatch = useDispatch();
@@ -10,5 +12,15 @@ export default function EditArticleFormContainer(props) {
     dispatch(deleteArticle(props.id));
   }
 
-  return <EditArticleForm onDeleteClick={handleDelete} />;
+  function onSubmit(values) {
+    // console.log(values);
+    // design, figma, ui/ux
+    dispatch(createTags(props.id, values.tags));
+  }
+
+  const EditArticleReduxForm = reduxForm({
+    form: "editing",
+  })(EditArticleForm);
+
+  return <EditArticleReduxForm onDeleteClick={handleDelete} onSubmit={onSubmit} />;
 }

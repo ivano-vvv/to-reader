@@ -3,7 +3,7 @@ import "./tag.css";
 
 export default function Tag(props) {
   function constructedClassName(props) {
-    let colorClassName = addSpace(`tag_${props.colorHex}`),
+    let colorClassName = addSpace(`tag_${props.color}`),
       positionClassName = addSpace(props.position + "__tag"),
       typeClassName = addSpace("tag-" + props.type);
 
@@ -16,9 +16,9 @@ export default function Tag(props) {
 
   if (props.type === "button") {
     return (
-      <button className={constructedClassName(props)}>{props.title}</button>
+      <button className={constructedClassName(props)}>{props.value}</button>
     );
   } else {
-    return <span className={constructedClassName(props)}>{props.title}</span>;
+    return <span className={constructedClassName(props)}>{props.value}</span>;
   }
 }
