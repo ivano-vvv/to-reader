@@ -55,23 +55,25 @@ export default function tagsReducer(state = initialState, action) {
       }
 
       function checkForOldTags(tags, state) {
+        if (state.tags.length === 0) return tags;
+
         return tags.filter((t) => {
-          state.tags.forEach((et) => {
-            if (compareTags(t, et)) {
-              return false;
-            }
-          });
-
-          return true;
-
-          function compareTags(newTag, existingTag) {
-            if (newTag === existingTag.value) {
-              return true;
-            } else {
-              return false;
-            }
+          if (compareTags(t, state)) {
+            return false;
+          } else {
+            return true;
           }
         });
+
+        function compareTags(newTag, state) {
+          for (let i = 0; i < state.tags.length; i++) {
+            if (newTag === state.tags[i].value) {
+              return true;
+            }
+          }
+
+          return false;
+        }
       }
 
       function setColor(colors) {
@@ -80,7 +82,8 @@ export default function tagsReducer(state = initialState, action) {
       }
 
       function createTagObjects(tagStr, state) {
-        let testVar = tagStr.map((t, id = state.tags.length) => {
+        let id = state.tags.length;
+        let testVar = tagStr.map((t) => {
           id++;
           return {
             id: id,

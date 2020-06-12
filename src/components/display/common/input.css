@@ -12,7 +12,11 @@
 }
 
 .input_textarea {
-    padding: 14px 12px;
-    line-height: 20px;
-    resize: none;
-  }
+  padding: 14px 12px;
+  line-height: 20px;
+  resize: none;
+}
+
+.input_textarea-tags::placeholder {
+  font-size: 13px;
+}

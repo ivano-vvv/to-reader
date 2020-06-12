@@ -13,8 +13,6 @@ export default function EditArticleFormContainer(props) {
   }
 
   function onSubmit(values) {
-    // console.log(values);
-    // design, figma, ui/ux
     dispatch(createTags(props.id, values.tags));
   }
 

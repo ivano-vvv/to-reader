@@ -9,6 +9,7 @@ export default function Textarea(props) {
       {...props.input}
       rows={props.rows}
       className={className}
+      placeholder={props.placeholder}
     ></textarea>
   );
 }

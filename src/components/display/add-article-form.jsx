@@ -13,12 +13,12 @@ export default function AddArticleForm(props) {
         <FormLabel
           text="Ссылка"
           htmlFor="link"
-          className="add-article-form__label add-article-form__oneline-label"
+          className="add-article-form__label"
         />
         <Field
           component={Input}
           placeholder="https://"
-          className="add-article-form__oneline-input add-article-form__link-input"
+          className="add-article-form__link-input"
           name="link"
         />
       </div>
@@ -28,7 +28,7 @@ export default function AddArticleForm(props) {
             <FormLabel
               text="Название"
               htmlFor="title"
-              className="add-article-form__label add-article-form__label-oneline-input"
+              className="add-article-form__label"
             />
             <Field
               rows="2"
@@ -58,12 +58,11 @@ export default function AddArticleForm(props) {
             className="add-article-form__cover-preview"
           />
           <div className="add-article-form__input-block">
-            <label
+            <FormLabel
+              text="Ссылка на изображение"
               htmlFor="cover"
-              className="add-article-form__label add-article-form__oneline-label"
-            >
-              Ссылка на изображение
-            </label>
+              className="add-article-form__label"
+            />
             <Field
               name="cover"
               component={Input}
@@ -85,6 +84,20 @@ export default function AddArticleForm(props) {
           text="Добавить в первоочередный список"
           className="add-article-form__label add-article-form__first-list-label"
         />
+      </div>
+      <div className="add-article-form__tags-block">
+        <FormLabel
+          text="Теги"
+          htmlFor="tags"
+          className="add-article-form__label add-article-form__label-oneline-input"
+        />
+        <Field
+          rows="2"
+          className="add-article-form__tags-input input_textarea-tags"
+          name="tags"
+          placeholder='Перечислите теги через запятую...'
+          component={Textarea}
+        ></Field>
       </div>
       <div className="add-article-form__buttons-block">
         <button className="add-article-form__button add-article-form__button_cancel">
