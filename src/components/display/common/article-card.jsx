@@ -51,13 +51,22 @@ export default function ArticleCard(props) {
           id={props.id}
         />
       </div>
-      <div className="article-card__tags-block">
+      {props.tags ? (
+        <div className="article-card__tags-block">
           {props.tags.map((t) => {
-            return(
-              <Tag value={t.value} color={t.color} position='article-card' type='label' />
-            )
+            return (
+              <Tag
+                value={t.value}
+                color={t.color}
+                position="article-card"
+                type="label"
+              />
+            );
           })}
         </div>
+      ) : (
+        <div />
+      )}
     </div>
   );
 }
