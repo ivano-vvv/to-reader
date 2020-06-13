@@ -10,9 +10,11 @@ export function getSavedTagsAPI(state) {
 }
 
 export function saveArticleAPI(articleData) {
-  let newTags = createNewTags(articleData.tags, getSavedTagsAPI());
+  if (articleData.tags) {
+    let newTags = createNewTags(articleData.tags, getSavedTagsAPI());
 
-  localStorage.setItem("tags", JSON.stringify(newTags));
+    localStorage.setItem("tags", JSON.stringify(newTags));
+  }
 
   let tempArticlesState = JSON.parse(localStorage.getItem("articlesPack"));
 
@@ -21,7 +23,7 @@ export function saveArticleAPI(articleData) {
     title: articleData.title,
     desc: articleData.desc,
     cover: articleData.cover,
-    tags: getTagsId(getSavedTagsAPI().tags, articleData.tags),
+    tags: articleData.tags ? getTagsId(getSavedTagsAPI().tags, articleData.tags) : null,
   };
 
   let id = Math.round(Math.random() * 1000000);
@@ -114,4 +116,3 @@ export function deleteArticleAPI(articleId) {
   localStorage.setItem("articlesPack", JSON.stringify(newState));
   return getSavedArticlesAPI();
 }
-
