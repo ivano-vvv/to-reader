@@ -10,6 +10,10 @@
   border: 2px solid #000000;
 }
 
+.tag-label {
+  cursor: default;
+}
+
 .tag-button {
   background: none;
   cursor: pointer;
@@ -65,6 +69,10 @@
 
 .tag-row__tag {
   margin-right: 16px;
+}
+
+.article-card__tag {
+  margin: 0 16px 16px 0;
 }
 
 .tag-row__tag:last-child {

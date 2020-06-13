@@ -1,6 +1,7 @@
 import React from "react";
 import "./article-card.css";
 import { ServiceButton } from "./service-button";
+import Tag from "./tag";
 
 export default function ArticleCard(props) {
   let coverDisplayClass = !props.cover ? "hidden" : "";
@@ -50,6 +51,13 @@ export default function ArticleCard(props) {
           id={props.id}
         />
       </div>
+      <div className="article-card__tags-block">
+          {props.tags.map((t) => {
+            return(
+              <Tag value={t.value} color={t.color} position='article-card' type='label' />
+            )
+          })}
+        </div>
     </div>
   );
 }

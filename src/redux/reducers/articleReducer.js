@@ -1,3 +1,5 @@
+import { getSavedArticlesAPI, saveArticleAPI, deleteArticleAPI, getSavedTagsAPI } from "../../DAL/storageAPI";
+
 const GET_SAVED_ARTICLES = "GET_SAVED_ARTICLES";
 export function getSavedArticles() {
   return { type: GET_SAVED_ARTICLES };
@@ -12,6 +14,7 @@ export function saveArticle(articleData) {
       title: articleData.title,
       desc: articleData.desc,
       cover: articleData.cover,
+      tags: articleData.tags,
     },
   };
 }
@@ -27,22 +30,14 @@ export function deleteArticle(articleId) {
 let initialState = [];
 
 export default function articlesReducer(state = initialState, action) {
-  let tempState = [],
-    newState = [];
-
   switch (action.type) {
     case GET_SAVED_ARTICLES:
-      return JSON.parse(localStorage.getItem("articlesPack"));
+      return getSavedArticlesAPI();
     case SAVE_ARTICLE:
-      tempState = JSON.parse(localStorage.getItem("articlesPack"));
-      tempState.push({ id: tempState.length + 1, ...action.article });
-      localStorage.setItem("articlesPack", JSON.stringify(tempState));
-      return JSON.parse(localStorage.getItem("articlesPack"));
+      saveArticleAPI(action.article);
+      return getSavedTagsAPI(state);
     case DELETE_ARTICLE:
-      tempState = JSON.parse(localStorage.getItem("articlesPack"));
-      newState = tempState.filter((i) => i.id !== action.articleId);
-      localStorage.setItem("articlesPack", JSON.stringify(newState));
-      return JSON.parse(localStorage.getItem("articlesPack"));
+      return deleteArticleAPI(action.articleId);
     default:
       return state;
   }

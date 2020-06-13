@@ -78,6 +78,14 @@
   outline: none;
 }
 
+.article-card__tags-block {
+  margin-top: 39px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 /* location classes */
 
 .articles-masonry-grid__article-card {

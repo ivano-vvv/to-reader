@@ -2,8 +2,8 @@ import React from "react";
 import "./content.css";
 import "./container.css";
 import Subheader from "../display/subheader";
-import ArticleCard from "./common/article-card";
 import Masonry from "react-masonry-css";
+import ArticleCardContainer from "../container/content__article-card";
 
 export default function Content(props) {
   return (
@@ -17,13 +17,13 @@ export default function Content(props) {
         >
           {props.articlesPack.map((a) => {
             return (
-              <ArticleCard
+              <ArticleCardContainer
                 title={a.title}
                 desc={a.desc}
                 link={a.link}
                 cover={a.cover}
                 id={a.id}
-                locationClassName='articles-masonry-grid__article-card'
+                tags={a.tags}
               />
             );
           })}
