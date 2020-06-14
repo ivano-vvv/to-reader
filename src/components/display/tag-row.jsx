@@ -21,6 +21,4 @@ export default function TagRow(props) {
       })}
     </div>
   );
-
-  return <div />;
 }
