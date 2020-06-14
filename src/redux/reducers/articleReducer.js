@@ -1,4 +1,4 @@
-import { getSavedArticlesAPI, saveArticleAPI, deleteArticleAPI, getSavedTagsAPI } from "../../DAL/storageAPI";
+import { getSavedArticlesAPI, saveArticleAPI, deleteArticleAPI, getSavedTagsAPI, getSavedArticlesWithTagsFilterAPI } from "../../DAL/storageAPI";
 
 const GET_SAVED_ARTICLES = "GET_SAVED_ARTICLES";
 export function getSavedArticles() {
@@ -27,6 +27,14 @@ export function deleteArticle(articleId) {
   };
 }
 
+const GET_ARTICLES_WITH_TAGS ='GET_ARTICLES_WITH_TAGS';
+export function getArticlesWithTagFilter(tags) {
+  return {
+    type: GET_ARTICLES_WITH_TAGS,
+    tags,
+  }
+}
+
 let initialState = [];
 
 export default function articlesReducer(state = initialState, action) {
@@ -38,6 +46,8 @@ export default function articlesReducer(state = initialState, action) {
       return getSavedTagsAPI(state);
     case DELETE_ARTICLE:
       return deleteArticleAPI(action.articleId);
+    case GET_ARTICLES_WITH_TAGS:
+      return getSavedArticlesWithTagsFilterAPI(action.tags);
     default:
       return state;
   }

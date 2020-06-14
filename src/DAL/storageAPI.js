@@ -1,3 +1,5 @@
+import { getSavedArticlesWithFilter, filterWithTags } from "./filter";
+
 export function getSavedArticlesAPI() {
   return JSON.parse(localStorage.getItem("articlesPack"));
 }
@@ -115,4 +117,8 @@ export function deleteArticleAPI(articleId) {
   let newState = tempState.filter((i) => i.id !== articleId);
   localStorage.setItem("articlesPack", JSON.stringify(newState));
   return getSavedArticlesAPI();
+}
+
+export function getSavedArticlesWithTagsFilterAPI(tags) {
+  return getSavedArticlesWithFilter(filterWithTags(tags));
 }
