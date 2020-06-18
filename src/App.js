@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/display/header";
-import ContentContainer from "./components/container/app__content";
+import ContentContainer from "./components/container/app__content_class";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { Route } from "react-router-dom";

@@ -7,7 +7,7 @@ export default function Tag(props) {
 
   if (props.type === "button") {
     return (
-      <button className={constructedClassName(props)}>{props.value}</button>
+      <button className={constructedClassName(props)} onClick={props.onClick} >{props.value}</button>
     );
   } else {
     return <span className={constructedClassName(props)}>{props.value}</span>;

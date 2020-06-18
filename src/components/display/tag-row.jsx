@@ -1,6 +1,6 @@
 import React from "react";
 import "./tag-row.css";
-import Tag from "./common/tag";
+import TagContainer from "../container/tag-row__tag";
 
 export default function TagRow(props) {
   let tagsAmount = props.tags.length > 4 ? 4 : props.tags.length;
@@ -11,11 +11,12 @@ export default function TagRow(props) {
     <div className="tag-row subheader__tag-row">
       {renderedTags.map((t) => {
         return (
-          <Tag
+          <TagContainer
             type="button"
             position="tag-row"
             color={t.color}
             value={t.value}
+            id={t.id}
           />
         );
       })}
