@@ -1,7 +1,31 @@
-import { getSavedArticlesWithFilter, filterWithTags } from "./filter";
+// connection to the Storage
 
-export function getSavedArticlesAPI() {
+function getArticlesFromStorage() {
   return JSON.parse(localStorage.getItem("articlesPack"));
+}
+
+
+
+export function getSavedArticlesAPI(filter) {
+  // filter = {tags: [], firstList: [], haveRead: []}
+
+  let resultArticlePack = getArticlesFromStorage();
+
+  if (filter.tags.length !== 0) {
+    resultArticlePack = resultArticlePack.filter((a) => {
+      for (let i = 0; i < a.tags.length; i++) {
+        for (let j = 0; j < filter.tags.length; j++) {
+          if (a.tags[i] === filter.tags[j].id) return true;
+        }
+      }
+
+      return false;
+    });
+  }
+
+  // firstList filter and haveRead filter will be here
+
+  return resultArticlePack;
 }
 
 export function getSavedTagsAPI(state) {
@@ -25,7 +49,9 @@ export function saveArticleAPI(articleData) {
     title: articleData.title,
     desc: articleData.desc,
     cover: articleData.cover,
-    tags: articleData.tags ? getTagsId(getSavedTagsAPI().tags, articleData.tags) : null,
+    tags: articleData.tags
+      ? getTagsId(getSavedTagsAPI().tags, articleData.tags)
+      : null,
   };
 
   let id = Math.round(Math.random() * 1000000);
@@ -117,8 +143,4 @@ export function deleteArticleAPI(articleId) {
   let newState = tempState.filter((i) => i.id !== articleId);
   localStorage.setItem("articlesPack", JSON.stringify(newState));
   return getSavedArticlesAPI();
-}
-
-export function getSavedArticlesWithTagsFilterAPI(tags) {
-  return getSavedArticlesWithFilter(filterWithTags(tags));
 }

@@ -16,6 +16,7 @@ export default function TagRow(props) {
             position="tag-row"
             color={t.color}
             value={t.value}
+            id={t.id}
           />
         );
       })}
