@@ -67,6 +67,90 @@
   border: 2px solid #976e31;
 }
 
+.tag_active-filter {
+  color: #e4e4e4;
+}
+
+.tag_red_active-filter {
+  background-color: #975134;
+}
+
+.tag_red_active-filter:hover {
+  background-color: #975134;
+}
+
+.tag_purple_active-filter {
+  background-color: #624c7d;
+}
+
+.tag_purple_active-filter:hover {
+  background-color: #624c7d;
+}
+
+.tag_olive_active-filter {
+  background-color: #4c7845;
+}
+
+.tag_olive_active-filter:hover {
+  background-color: #4c7845;
+}
+
+.tag_reddish-brown_active-filter {
+  background-color: #975134;
+}
+
+.tag_reddish-brown_active-filter:hover {
+  background-color: #975134;
+}
+
+.tag_green_active-filter {
+  background-color: #507b0a;
+}
+
+.tag_green_active-filter:hover {
+  background-color: #507b0a;
+}
+
+.tag_blue_active-filter {
+  background-color: #1a2484;
+}
+
+.tag_blue_active-filter:hover {
+  background-color: #1a2484;
+}
+
+.tag_emerald_active-filter {
+  background-color: #196a6a;
+}
+
+.tag_emerald_active-filter:hover {
+  background-color: #196a6a;
+}
+
+.tag_plum_active-filter {
+  background-color: #773665;
+}
+
+.tag_plum_active-filter:hover {
+  background-color: #773665;
+}
+
+.tag_teal_active-filter {
+  background-color: #397487;
+}
+
+.tag_teal_active-filter:hover {
+  background-color: #397487;
+}
+
+.tag_brown_active-filter {
+  background-color: #976e31;
+}
+
+.tag_brown_active-filter:hover {
+  background-color: #976e31;
+}
+
 .tag-row__tag {
   margin-right: 16px;
 }
