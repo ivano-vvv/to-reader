@@ -5,9 +5,9 @@ import {
   getSavedTagsAPI,
 } from "../../DAL/storageAPI";
 
-const GET_SAVED_ARTICLES = "GET_SAVED_ARTICLES";
-export function getSavedArticles(filter) {
-  return { type: GET_SAVED_ARTICLES, filter };
+const SET_ARTICLES = "SET_ARTICLES";
+export function setArticles(articlesPack) {
+  return { type: SET_ARTICLES, articlesPack };
 }
 
 const SAVE_ARTICLE = "SAVE_ARTICLE";
@@ -32,12 +32,19 @@ export function deleteArticle(articleId) {
   };
 }
 
+export function getSavedArticles(filter) {
+  return (dispatch) => {
+    const articlesPack = getSavedArticlesAPI(filter);
+    dispatch(setArticles(articlesPack));
+  };
+}
+
 let initialState = [];
 
 export default function articlesReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_SAVED_ARTICLES:
-      return getSavedArticlesAPI(action.filter);
+    case SET_ARTICLES:
+      return action.articlesPack;
     case SAVE_ARTICLE:
       saveArticleAPI(action.article);
       return getSavedTagsAPI(state);
