@@ -1,0 +1,62 @@
+.modal-link {
+  border: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.modal-link:hover {
+  color: #4b4b4b;
+}
+
+.modal-link:focus {
+  outline: none;
+}
+
+.tag-row__modal-link {
+  margin-left: 20px;
+}
+
+.popup-content {
+  border-radius: 12px;
+}
+
+.tags-modal {
+  padding: 35px;
+}
+
+.tags-modal__h2 {
+  margin-bottom: 84px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.tags-modal__container {
+  margin-left: -18px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height: 264px;
+}
+
+.tags-modal__buttons-block {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.tags-modal__button {
+  margin-left: 16px;
+}
+

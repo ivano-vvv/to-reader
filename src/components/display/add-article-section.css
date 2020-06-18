@@ -9,10 +9,10 @@
 }
 
 .add-article-section__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 74px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 74px;
 }
 
 .add-article-section__heading {
@@ -24,19 +24,18 @@
 }
 
 .add-article-section__close-cross {
-    width: 24px;
-    height: 24px;
-    margin-bottom: -4px;
-    padding: 4px;
-    box-sizing: border-box;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url('../../assets/closing_cross.svg');
-    opacity: 40%;
-    transition: opacity 0.1s ease-in;
+  width: 24px;
+  height: 24px;
+  margin-bottom: -4px;
+  padding: 4px;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../assets/closing_cross.svg");
+  opacity: 40%;
+  transition: opacity 0.1s ease-in;
 }
 
 .add-article-section__close-cross:hover {
-    opacity: 100%;
+  opacity: 100%;
 }
-

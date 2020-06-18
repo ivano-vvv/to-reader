@@ -68,7 +68,7 @@
 }
 
 .tag_active-filter {
-  color: #e4e4e4;
+  color: #f4f4f4;
 }
 
 .tag_red_active-filter {
@@ -161,4 +161,8 @@
 
 .tag-row__tag:last-child {
   margin-right: 20px;
+}
+
+.tags-modal__tag {
+  margin: 0 0 16px 16px;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "./tag-row.css";
-import TagContainer from "../container/tag-row__tag";
+import TagContainer from "../container/tag-container";
+import TagFilterModal from "../modals/tag-filter-modal";
 
 export default function TagRow(props) {
   let tagsAmount = props.tags.length > 4 ? 4 : props.tags.length;
@@ -20,6 +21,7 @@ export default function TagRow(props) {
           />
         );
       })}
+      <TagFilterModal />
     </div>
   );
 }

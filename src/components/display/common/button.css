@@ -1,0 +1,48 @@
+.button {
+  background-color: #3477b4;
+  border-radius: 4px;
+  border: none;
+  box-sizing: border-box;
+  padding: 12px 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in;
+}
+
+.button:hover {
+  background-color: #5d95ca;
+}
+
+.button:active {
+  background-color: #024483;
+}
+
+.button:focus {
+  box-shadow: 0px 4px 12px rgba(169, 169, 169, 0.25);
+  outline: none;
+}
+
+.button_accent {
+  background: none;
+  border: 2px solid #3477b4;
+  padding: 10px 38px;
+  color: #3477b4;
+}
+
+.button_accent:hover {
+  background-color: #e4e4e4;
+}
+
+.button_accent:active {
+  background-color: #9abcdd;
+}
+
+.button_accent:focus {
+  box-shadow: 0px 4px 12px rgba(169, 169, 169, 0.25);
+  outline: none;
+}

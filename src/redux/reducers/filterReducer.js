@@ -16,6 +16,13 @@ export function deleteTagFilter(id) {
   };
 }
 
+const DELETE_ALL_TAGS_FILTER = "DELETE_ALL_TAGS_FILTER";
+export function deleteAllTagsFilter() {
+  return {
+    type: DELETE_ALL_TAGS_FILTER,
+  };
+}
+
 export default function filterReducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_TAG_FILTER:
@@ -26,6 +33,11 @@ export default function filterReducer(state = initialState, action) {
         tags: state.tags.filter((t) => {
           return t.id !== action.id;
         }),
+      };
+    case DELETE_ALL_TAGS_FILTER:
+      return {
+        ...state,
+        tags: [],
       };
     default:
       return state;
