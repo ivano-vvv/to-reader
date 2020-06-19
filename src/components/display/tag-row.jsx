@@ -21,7 +21,7 @@ export default function TagRow(props) {
           />
         );
       })}
-      <TagFilterModal />
+      {props.tags.length > 4 ? <TagFilterModal /> : <div />}
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import {
-  getSavedArticlesAPI,
   saveArticleAPI,
   deleteArticleAPI,
   getSavedTagsAPI,
+  switchFirstListArticleStatusAPI,
+  switchHaveReadListArticleStatusAPI,
 } from "../../DAL/storageAPI";
 
 const SET_ARTICLES = "SET_ARTICLES";
@@ -32,10 +33,21 @@ export function deleteArticle(articleId) {
   };
 }
 
-export function getSavedArticles(filter) {
-  return (dispatch) => {
-    const articlesPack = getSavedArticlesAPI(filter);
-    dispatch(setArticles(articlesPack));
+const SWITCH_FIRST_LIST_STATUS = "SWITCH_FIRST_LIST_STATUS";
+export function switchFirstListArticleStatus(id, filter) {
+  return {
+    type: SWITCH_FIRST_LIST_STATUS,
+    id,
+    filter,
+  };
+}
+
+const SWITCH_READ_STATUS = "SWITCH_READ_STATUS";
+export function switchReadArticleStatus(id, filter) {
+  return {
+    type: SWITCH_READ_STATUS,
+    id,
+    filter,
   };
 }
 
@@ -50,6 +62,10 @@ export default function articlesReducer(state = initialState, action) {
       return getSavedTagsAPI(state);
     case DELETE_ARTICLE:
       return deleteArticleAPI(action.articleId);
+    case SWITCH_FIRST_LIST_STATUS:
+      return switchFirstListArticleStatusAPI(action.id, action.filter);
+    case SWITCH_READ_STATUS:
+      return switchHaveReadListArticleStatusAPI(action.id, action.filter);
     default:
       return state;
   }

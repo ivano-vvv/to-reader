@@ -24,6 +24,8 @@ export default function Content(props) {
                 cover={a.cover}
                 id={a.id}
                 tags={a.tags}
+                isFirstList={a.isFirstList}
+                isRead={a.isRead}
               />
             );
           })}

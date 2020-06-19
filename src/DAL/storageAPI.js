@@ -4,10 +4,8 @@ function getArticlesFromStorage() {
   return JSON.parse(localStorage.getItem("articlesPack"));
 }
 
-
-
 export function getSavedArticlesAPI(filter) {
-  // filter = {tags: [], firstList: [], haveRead: []}
+  // filter = { tags: [], isFirstList: false, isReadList: false, isUnreadList: false }
 
   let resultArticlePack = getArticlesFromStorage();
 
@@ -23,9 +21,70 @@ export function getSavedArticlesAPI(filter) {
     });
   }
 
-  // firstList filter and haveRead filter will be here
+  if (filter.isReadList) {
+    resultArticlePack = resultArticlePack.filter((a) => {
+      if (a.isRead) return true;
+    });
+  }
+
+  if (filter.isUnreadList) {
+    resultArticlePack = resultArticlePack.filter((a) => {
+      if (!a.isRead) return true;
+    });
+  }
+
+  if (filter.isFirstList) {
+    resultArticlePack = resultArticlePack.filter((a) => {
+      if (a.isFirstList) return true;
+    });
+  }
 
   return resultArticlePack;
+}
+
+export function switchFirstListArticleStatusAPI(id, filter) {
+  let articlesPack = getArticlesFromStorage(),
+    firstListItemsAmount = getFirstListItemsAmount(),
+    articleIndex = getArticleIndex(articlesPack, id);
+
+  if (articlesPack[articleIndex].isFirstList) {
+    articlesPack[articleIndex].isFirstList = !articlesPack[articleIndex]
+      .isFirstList;
+  } else {
+    if (firstListItemsAmount < 6) {
+      articlesPack[articleIndex].isFirstList = true;
+    }
+  }
+
+  localStorage.setItem("articlesPack", JSON.stringify(articlesPack));
+
+  return getSavedArticlesAPI(filter);
+}
+
+export function switchHaveReadListArticleStatusAPI(id, filter) {
+  let articlesPack = getArticlesFromStorage(),
+    articleIndex = getArticleIndex(articlesPack, id);
+
+  if (!articlesPack[articleIndex].isRead) {
+    articlesPack[articleIndex].isRead = true;
+  } else {
+    articlesPack[articleIndex].isRead = !articlesPack[articleIndex].isRead;
+  }
+
+  localStorage.setItem("articlesPack", JSON.stringify(articlesPack));
+
+  return getSavedArticlesAPI(filter);
+}
+
+function getFirstListItemsAmount() {
+  let firstList = getArticlesFromStorage().filter((a) => a.isFirstList);
+  return firstList.length;
+}
+
+function getArticleIndex(articlesPack, id) {
+  for (let i = 0; i < articlesPack.length; i++) {
+    if (articlesPack[i].id === id) return i;
+  }
 }
 
 export function getSavedTagsAPI(state) {

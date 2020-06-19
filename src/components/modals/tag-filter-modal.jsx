@@ -5,6 +5,8 @@ import TagContainer from "../container/tag-container";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteAllTagsFilter } from "../../redux/reducers/filterReducer";
 import Button from "../display/common/button";
+import ButtonLink from "../display/common/button-link";
+import { Link } from "react-router-dom";
 
 export default function TagFilterModal(props) {
   const tagsCloud = useSelector((state) => state.tags.tags);
@@ -13,7 +15,9 @@ export default function TagFilterModal(props) {
   return (
     <Popup
       trigger={
-        <button className="tag-row__modal-link modal-link">Все теги...</button>
+        <div style={{ display: "flex" }}>
+          <ButtonLink className="tag-row__modal-link" value="Все теги..." />
+        </div>
       }
       modal
       closeOnDocumentClick
@@ -43,7 +47,7 @@ export default function TagFilterModal(props) {
                 dispatch(deleteAllTagsFilter());
               }}
               value="Сбросить все"
-              type='accent'
+              type="accent"
             />
             <Button
               className="tags-modal__button"

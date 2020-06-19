@@ -7,7 +7,7 @@ export default function ArticleCardContainer(props) {
 
   let tags = [];
   if (props.tags) {
-    tags = getTagsbyId(props.tags, tagsState.tags);
+    tags = getTagsById(props.tags, tagsState.tags);
   }
 
   return (
@@ -17,16 +17,18 @@ export default function ArticleCardContainer(props) {
       link={props.link}
       cover={props.cover}
       id={props.id}
+      isFirstList={props.isFirstList}
+      isRead={props.isRead}
       tags={tags}
       locationClassName="articles-masonry-grid__article-card"
     />
   );
 
-  function getTagsbyId(tagsId, tagsState) {
+  function getTagsById(tagsId, tagsState) {
     return tagsId.map((t) => {
       for (let i = 0; i < tagsState.length; i++) {
         if (t === tagsState[i].id) {
-            return(tagsState[i])
+          return tagsState[i];
         }
       }
     });

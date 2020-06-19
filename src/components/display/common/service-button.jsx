@@ -1,20 +1,60 @@
 import React from "react";
 import "./service-button.css";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { switchFirstListArticleStatus, switchReadArticleStatus } from "../../../redux/reducers/articleReducer";
 
 export function ServiceButton(props) {
-  let className =
-    "service-button " + props.className + " service-button_" + props.type;
+  function classNameConstructor(props) {
+    return (
+      "service-button" +
+      addSpace(props.className) +
+      addSpace(`service-button_${props.type}`) +
+      (props.isActive
+        ? addSpace(`service-button_${props.type}_active`)
+        : addSpace(`service-button_${props.type}`))
+    );
 
-    switch (props.type) {
+    function addSpace(str) {
+      return " " + str;
+    }
+  }
+
+  const filter = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
+
+  function onFirstListClick(e) {
+    e.preventDefault();
+    dispatch(switchFirstListArticleStatus(props.id, filter));
+  }
+  function onReadListClick(e) {
+    e.preventDefault();
+    dispatch(switchReadArticleStatus(props.id, filter));
+  }
+
+  switch (props.type) {
     case "edit":
       return (
         <Link
           to={{ pathname: "/edit", state: { id: props.id } }}
-          className={className}
+          className={classNameConstructor(props)}
+        />
+      );
+    case "first-list":
+      return (
+        <button
+          className={classNameConstructor(props)}
+          onClick={onFirstListClick}
+        />
+      );
+    case "isRead":
+      return (
+        <button
+          className={classNameConstructor(props)}
+          onClick={onReadListClick}
         />
       );
     default:
-      return <div className={className} />;
+      return <div className={classNameConstructor(props)} />;
   }
 }

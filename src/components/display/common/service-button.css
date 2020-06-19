@@ -1,28 +1,46 @@
 .service-button {
-    width: 40px;
-    height: 40px;
-    box-sizing: border-box;
-    border: 1px solid #262626;
-    border-radius: 4px;
-    background-repeat: no-repeat;
-    background-position: center;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #262626;
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .service-button:hover {
-    background-color: #ebebeb;
+  background-color: #ebebeb;
+}
+
+.service-button:focus {
+  outline: none;
 }
 
 .service-button_isRead {
-    background-image: url('../../../assets/isRead-false.svg');
-    padding: 8px 8px;
+  background-image: url("../../../assets/isRead-false.svg");
+  padding: 8px 8px;
+}
+
+.service-button_isRead_active {
+  background-image: url("../../../assets/isRead-true.svg");
+  padding: 8px 8px;
+  background-size: 23px 23px;
 }
 
 .service-button_edit {
-    background-image: url('../../../assets/edit.svg');
-    padding: 11px 8px 8px 8px;
+  background-image: url("../../../assets/edit.svg");
+  padding: 11px 8px 8px 8px;
 }
 
 .service-button_first-list {
-    background-image: url('../../../assets/firstList-false.svg');
-    padding: 8px 11px;
+  background-image: url("../../../assets/firstList-false.svg");
+  padding: 8px 11px;
+}
+
+.service-button_first-list_active {
+  background-image: url("../../../assets/firstList-true.svg");
+  background-size: 18px 24px;
+  padding: 8px 11px;
 }
