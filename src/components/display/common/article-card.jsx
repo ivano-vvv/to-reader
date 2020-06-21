@@ -9,7 +9,7 @@ export default function ArticleCard(props) {
     ? "article-card__heading_zero-margin-top"
     : "";
 
-    return (
+  return (
     <div className={"article-card " + props.locationClassName}>
       <a
         href={props.link}
@@ -37,18 +37,18 @@ export default function ArticleCard(props) {
         </a>
         <ServiceButton
           className="article-card__service-button"
-          type="isRead"
+          type={props.isPreview ? "isRead_preview" : "isRead"}
           isActive={props.isRead}
           id={props.id}
         />
         <ServiceButton
           className="article-card__service-button"
-          type="edit"
+          type={props.isPreview ? "edit_preview" : "edit"}
           id={props.id}
         />
         <ServiceButton
           className="article-card__service-button"
-          type="first-list"
+          type={props.isPreview ? "first-list_preview" : "first-list"}
           isActive={props.isFirstList}
           id={props.id}
         />

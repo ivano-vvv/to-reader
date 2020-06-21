@@ -1,0 +1,143 @@
+/* blocks */
+
+.article-form__block {
+  position: relative;
+}
+
+.article-form__main-info {
+  margin-top: 51px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.article-form__first-list-block {
+  margin-top: 57px;
+}
+
+.article-form__buttons-block {
+  margin-top: 120px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.article-form__desc-block {
+  margin-top: 41px;
+}
+
+.article-form__tags-block {
+  margin-top: 43px;
+}
+
+/* labels */
+
+.article-form__label {
+  margin-bottom: 29px;
+  display: block;
+}
+
+.article-form__oneline-label {
+  margin-bottom: 13px;
+}
+
+.article-form__first-list-label {
+  display: inline;
+  margin-left: 12px;
+}
+
+.article-form__cover-preview {
+  margin-bottom: 28px;
+  object-fit: cover;
+  width: 240px;
+  height: 152px;
+}
+
+/* errors */
+
+.article-form__error-notification {
+  color: #cb1f1f;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  position: absolute;
+}
+
+.article-form__error-notification_link {
+  right: 0;
+  top: 25px;
+}
+
+.article-form__error-notification_title {
+  right: 0;
+  top: 25px;
+}
+
+/* inputs */
+
+.article-form__link-input {
+  width: 660px;
+}
+
+.article-form__title-input {
+  width: 322px;
+}
+
+.article-form__desc-input {
+  width: 322px;
+}
+
+.article-form__cover-link-input {
+  width: 240px;
+}
+
+.article-form__tags-input {
+  width: 322px;
+}
+
+/* buttons */
+
+.article-form__button {
+  border-radius: 4px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.article-form__button_cancel {
+  background: #cecece;
+  padding: 12px 32px;
+  margin-right: 12px;
+}
+
+.article-form__button:focus {
+  box-shadow: 0px 4px 12px rgba(169, 169, 169, 0.25);
+  outline: none;
+}
+
+.article-form__button_cancel:hover {
+  background-color: #a1a1a1;
+}
+
+.article-form__button_cancel:active {
+  background-color: #696969;
+}
+.article-form__button_save {
+  background: #3477b4;
+  padding: 12px 50px;
+}
+
+.article-form__button_save:hover {
+  background-color: #5d95ca;
+}
+
+.article-form__button_save:active {
+  background-color: #024483;
+}
+
+/* image */

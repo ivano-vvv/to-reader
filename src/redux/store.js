@@ -5,12 +5,14 @@ import { reducer as formReducer } from "redux-form";
 import tagsReducer from "./reducers/tagsReducer";
 import filterReducer from "./reducers/filterReducer";
 import ReduxThunk from "redux-thunk";
+import articleFormReducer from "./reducers/articleFormReducer";
 
 let reducers = combineReducers({
   articlesPack: articlesReducer,
   previewCardData: previewCardReducer,
   tags: tagsReducer,
   filter: filterReducer,
+  articleForm: articleFormReducer,
   form: formReducer,
 });
 

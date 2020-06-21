@@ -44,7 +44,7 @@ export function getSavedArticlesAPI(filter) {
 
 export function switchFirstListArticleStatusAPI(id, filter) {
   let articlesPack = getArticlesFromStorage(),
-    firstListItemsAmount = getFirstListItemsAmount(),
+    firstListItemsAmount = getFirstListItemsAmountAPI(),
     articleIndex = getArticleIndex(articlesPack, id);
 
   if (articlesPack[articleIndex].isFirstList) {
@@ -76,7 +76,7 @@ export function switchHaveReadListArticleStatusAPI(id, filter) {
   return getSavedArticlesAPI(filter);
 }
 
-function getFirstListItemsAmount() {
+export function getFirstListItemsAmountAPI() {
   let firstList = getArticlesFromStorage().filter((a) => a.isFirstList);
   return firstList.length;
 }

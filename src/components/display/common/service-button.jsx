@@ -2,7 +2,10 @@ import React from "react";
 import "./service-button.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { switchFirstListArticleStatus, switchReadArticleStatus } from "../../../redux/reducers/articleReducer";
+import {
+  switchFirstListArticleStatus,
+  switchReadArticleStatus,
+} from "../../../redux/reducers/articleReducer";
 
 export function ServiceButton(props) {
   function classNameConstructor(props) {
@@ -54,6 +57,12 @@ export function ServiceButton(props) {
           onClick={onReadListClick}
         />
       );
+    case "edit_preview":
+      return <div className={classNameConstructor(props)} />;
+    case "first-list_preview":
+      return <div className={classNameConstructor(props)} />;
+    case "isRead_preview":
+      return <div className={classNameConstructor(props)} />;
     default:
       return <div className={classNameConstructor(props)} />;
   }

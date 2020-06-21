@@ -2,14 +2,8 @@ import React from "react";
 import "./input.css";
 
 export default function Input(props) {
-  let className = "input " + props.className;
+  let className =
+    "input " + props.className + ' ' + (props.error ? "input_error" : "");
 
-  return (
-    <input
-      {...props.input}
-      type="text"
-      placeholder={props.placeholder}
-      className={className}
-    ></input>
-  );
+  return <input {...props} type="text" className={className}></input>;
 }

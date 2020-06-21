@@ -29,7 +29,23 @@
   background-size: 23px 23px;
 }
 
+.service-button_isRead_preview {
+  background-image: url("../../../assets/isRead-false.svg");
+  padding: 8px 8px;
+}
+
+.service-button_isRead_preview_active {
+  background-image: url("../../../assets/isRead-true.svg");
+  padding: 8px 8px;
+  background-size: 23px 23px;
+}
+
 .service-button_edit {
+  background-image: url("../../../assets/edit.svg");
+  padding: 11px 8px 8px 8px;
+}
+
+.service-button_edit_preview {
   background-image: url("../../../assets/edit.svg");
   padding: 11px 8px 8px 8px;
 }
@@ -40,6 +56,17 @@
 }
 
 .service-button_first-list_active {
+  background-image: url("../../../assets/firstList-true.svg");
+  background-size: 18px 24px;
+  padding: 8px 11px;
+}
+
+.service-button_first-list_preview {
+  background-image: url("../../../assets/firstList-false.svg");
+  padding: 8px 11px;
+}
+
+.service-button_first-list_preview_active {
   background-image: url("../../../assets/firstList-true.svg");
   background-size: 18px 24px;
   padding: 8px 11px;
