@@ -52,7 +52,7 @@ const storageAPI = {
 
     this._saveStore(articlesPack);
 
-    return this.getSavedArticlesAPI(filter);
+    return this.getSavedArticles(filter);
   },
   switchHaveReadListArticleStatus(id, filter) {
     let articlesPack = this._store(),
@@ -198,6 +198,9 @@ const storageAPI = {
     this._saveStore(newState);
     return this._store();
   },
+  getFirstListItemsAmount() {
+    return this._firstList.length;
+  },
   _store: () => JSON.parse(localStorage.getItem("articlesPack")),
   _tags: () => JSON.parse(localStorage.getItem("tags")),
   _firstList: () => this._store().filter((a) => a.isFirstList),
@@ -237,4 +240,8 @@ export function saveArticleAPI(articleData) {
 
 export function deleteArticleAPI(articleId) {
   return storageAPI.deleteArticle(articleId);
+}
+
+export function getFirstListItemsAmountAPI() {
+  return storageAPI;
 }
