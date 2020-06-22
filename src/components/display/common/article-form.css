@@ -61,14 +61,6 @@
   font-size: 12px;
   line-height: 14px;
   position: absolute;
-}
-
-.article-form__error-notification_link {
-  right: 0;
-  top: 25px;
-}
-
-.article-form__error-notification_title {
   right: 0;
   top: 25px;
 }
@@ -140,4 +132,9 @@
   background-color: #024483;
 }
 
-/* image */
+.article-form__button_disabled,
+.article-form__button_disabled:hover,
+.article-form__button_disabled:active {
+  background-color: #979797;
+  cursor: default;
+}

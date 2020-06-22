@@ -10,7 +10,20 @@ import {
   setTitleLengthErrorStatus,
   setDescLengthErrorStatus,
   updatePreviewCover,
+  switchTagLengthErrorStatus,
 } from "../../redux/reducers/articleFormReducer";
+import {
+  updateFirstListCheck,
+  updateLinkValue,
+  updateTitleValue,
+  updateDescValue,
+  updateTagsInputValue,
+} from "../../form-process/articleFormOnChange";
+import {
+  onLinkInputBlur,
+  onTitleInputBlur,
+  onDescInputBlur,
+} from "../../form-process/articleFormOnBlur";
 
 export default function AddArticleFormContainer(props) {
   const dispatch = useDispatch();
@@ -23,41 +36,20 @@ export default function AddArticleFormContainer(props) {
 
   function onChange(e) {
     switch (e.target.name) {
-      case "firstListCheck":
-        dispatch(updateInputValues(e.target.name, e.target.checked));
-        break;
       case "link":
-        dispatch(setLinkErrorStatus(false));
-        dispatch(updateInputValues(e.target.name, e.target.value));
+        dispatch(updateLinkValue(e.target.value));
         break;
       case "title":
-        dispatch(setTitleLengthErrorStatus(false));
-        dispatch(setTitleEmptyErrorStatus(false));
-        if (e.target.value.length >= 80) {
-          dispatch(
-            updateInputValues(e.target.name, e.target.value.slice(0, 80))
-          );
-          dispatch(setTitleLengthErrorStatus(true));
-        } else {
-          dispatch(updateInputValues(e.target.name, e.target.value));
-        }
+        dispatch(updateTitleValue(e.target.value));
         break;
       case "desc":
-        dispatch(setDescLengthErrorStatus(false));
-        if (e.target.value.length >= 280) {
-          dispatch(
-            updateInputValues(e.target.name, e.target.value.slice(0, 280))
-          );
-          dispatch(setDescLengthErrorStatus(true));
-        } else {
-          dispatch(updateInputValues(e.target.name, e.target.value));
-        }
+        dispatch(updateDescValue(e.target.value));
         break;
       case "tags":
-        let tags_tagList = e.target.value.split(",").map((t) => t.trim());
-        tags_tagList[tags_tagList.length - 1].length === 16
-          ? dispatch(updateInputValues(e.target.name, e.target.value + ", "))
-          : dispatch(updateInputValues(e.target.name, e.target.value));
+        dispatch(updateTagsInputValue(e.target.value));
+        break;
+      case "firstListCheck":
+        dispatch(updateFirstListCheck(e.target.checked));
         break;
       default:
         dispatch(updateInputValues(e.target.name, e.target.value));
@@ -68,30 +60,19 @@ export default function AddArticleFormContainer(props) {
   function onBlur(e) {
     switch (e.target.name) {
       case "link":
-        if (values.link.trim() === "" || values.link === "https://") {
-          dispatch(setLinkErrorStatus(true));
-        } else {
-          dispatch(setLinkErrorStatus(false));
-        }
+        dispatch(onLinkInputBlur(values));
         break;
       case "title":
-        dispatch(setTitleLengthErrorStatus(false));
-        if (values.title.trim() === "") {
-          dispatch(updateInputValues(e.target.name, ""));
-          dispatch(setTitleEmptyErrorStatus(true));
-        } else {
-          dispatch(setTitleEmptyErrorStatus(false));
-        }
+        dispatch(onTitleInputBlur(values));
         break;
       case "desc":
-        dispatch(setDescLengthErrorStatus(false));
+        dispatch(onDescInputBlur());
         break;
       case "cover":
         dispatch(updatePreviewCover());
       default:
         break;
     }
-    console.log(e.target);
   }
 
   function onSubmit(e) {

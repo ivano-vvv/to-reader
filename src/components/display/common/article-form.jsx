@@ -6,6 +6,13 @@ import Input from "./input";
 import FormLabel from "./form-label";
 
 export default function ArticleForm(props) {
+  let stopSubmitError = props.values.link === "" || props.values.title === "";
+  function buttonClassConstructor(error) {
+    return error
+      ? "article-form__button article-form__button_save article-form__button_disabled"
+      : "article-form__button article-form__button_save";
+  }
+
   return (
     <form onSubmit={props.onSubmit} className="article-form">
       <div className="article-form__link-block article-form__block">
@@ -135,6 +142,14 @@ export default function ArticleForm(props) {
           htmlFor="tags"
           className="article-form__label article-form__label-oneline-input"
         />
+        <span
+          className={
+            "article-form__error-notification " +
+            (props.onChangeErrors.tags_maxLength ? "" : "hidden")
+          }
+        >
+          Длина одного тега не более 16 символов
+        </span>
         <Textarea
           rows="2"
           className="article-form__tags-input input_textarea-tags"
@@ -149,8 +164,9 @@ export default function ArticleForm(props) {
           Отменить
         </button>
         <button
-          className="article-form__button article-form__button_save"
+          className={buttonClassConstructor(stopSubmitError)}
           type="submit"
+          disabled={stopSubmitError}
         >
           Сохранить статью
         </button>

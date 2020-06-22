@@ -89,6 +89,13 @@ export function updatePreviewCover() {
   };
 }
 
+const SWITCH_TAG_LENGTH_ERROR_STATUS = "SWITCH_TAG_LENGTH_ERROR_STATUS";
+export function switchTagLengthErrorStatus() {
+  return {
+    type: SWITCH_TAG_LENGTH_ERROR_STATUS,
+  };
+}
+
 let initialState = {
   values: {
     link: "",
@@ -167,38 +174,14 @@ export default function articleFormReducer(state = initialState, action) {
         values: { ...state.values, firstListCheck: action.value },
       };
     case UPDATE_TAGS_VALUE:
-      if (
-        action.value[action.value.length - 1] === "," ||
-        action.value === " " ||
-        action.value === ""
-      ) {
-        return {
-          ...state,
-          values: { ...state.values, tags: action.value },
-        };
-      } else if (
-        action.value[action.value.length - 1] === " " &&
-        action.value[action.value.length - 2] === " "
-      ) {
+      if (!action.value) {
         return state;
-      } else if (action.value[action.value.length - 1] === " ") {
+      } else {
         return {
           ...state,
           values: { ...state.values, tags: action.value },
-        };
-      } else {
-        let updateTagsValue = action.value.replace(", ", ",");
-        updateTagsValue = updateTagsValue
-          .split(",")
-          .map((t) => t.trim())
-          .map((t) => Uppercase(t))
-          .join(", ");
-        return {
-          ...state,
-          values: { ...state.values, tags: updateTagsValue },
         };
       }
-
     case CLEAR_FORM:
       return initialState;
     case SET_LINK_ERROR_STATUS:
@@ -235,11 +218,15 @@ export default function articleFormReducer(state = initialState, action) {
         ...state,
         coverForPreview: state.values.cover,
       };
+    case SWITCH_TAG_LENGTH_ERROR_STATUS:
+      return {
+        ...state,
+        onChangeErrors: {
+          ...state.onChangeErrors,
+          tags_maxLength: !state.onChangeErrors.tags_maxLength,
+        },
+      };
     default:
       return state;
-  }
-
-  function Uppercase(str) {
-    return str[0].toUpperCase() + str.slice(1);
   }
 }
