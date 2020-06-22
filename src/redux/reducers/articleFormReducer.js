@@ -174,7 +174,7 @@ export default function articleFormReducer(state = initialState, action) {
         values: { ...state.values, firstListCheck: action.value },
       };
     case UPDATE_TAGS_VALUE:
-      if (!action.value) {
+      if (action.value === null) {
         return state;
       } else {
         return {
