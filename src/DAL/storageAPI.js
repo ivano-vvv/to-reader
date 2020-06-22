@@ -117,6 +117,7 @@ const storageAPI = {
       ...articleDataWithTagsId,
     });
     this._saveStore(tempArticlesState);
+    return this._store();
 
     // functions
 

@@ -1,7 +1,7 @@
 import {
   saveArticleAPI,
   deleteArticleAPI,
-  getSavedTagsAPI,
+  getSavedArticlesAPI,
   switchFirstListArticleStatusAPI,
   switchHaveReadListArticleStatusAPI,
 } from "../../DAL/storageAPI";
@@ -58,8 +58,7 @@ export default function articlesReducer(state = initialState, action) {
     case SET_ARTICLES:
       return action.articlesPack;
     case SAVE_ARTICLE:
-      saveArticleAPI(action.article);
-      return getSavedTagsAPI(state);
+      return saveArticleAPI(action.article);
     case DELETE_ARTICLE:
       return deleteArticleAPI(action.articleId);
     case SWITCH_FIRST_LIST_STATUS:
