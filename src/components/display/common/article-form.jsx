@@ -135,6 +135,14 @@ export default function ArticleForm(props) {
           text="Добавить в первоочередный список"
           className="article-form__label article-form__first-list-label"
         />
+        <span
+          className={
+            "article-form__error-notification " +
+            (props.onChangeErrors.firstList_maxItems ? "" : "hidden")
+          }
+        >
+          В списке не может быть больше 6 статей
+        </span>
       </div>
       <div className="article-form__tags-block article-form__block">
         <FormLabel
@@ -144,7 +152,7 @@ export default function ArticleForm(props) {
         />
         <span
           className={
-            "article-form__error-notification " +
+            "article-form__error-notification article-form__error-notification_tags " +
             (props.onChangeErrors.tags_maxLength ? "" : "hidden")
           }
         >

@@ -4,7 +4,6 @@ import {
   setTitleEmptyErrorStatus,
   setTitleLengthErrorStatus,
   setDescLengthErrorStatus,
-  switchTagLengthErrorStatus,
 } from "../redux/reducers/articleFormReducer";
 
 export function onLinkInputBlur(values) {

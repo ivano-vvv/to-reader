@@ -18,6 +18,7 @@ import {
   updateTitleValue,
   updateDescValue,
   updateTagsInputValue,
+  updateCoverLinkValue,
 } from "../../form-process/articleFormOnChange";
 import {
   onLinkInputBlur,
@@ -50,6 +51,9 @@ export default function AddArticleFormContainer(props) {
         break;
       case "firstListCheck":
         dispatch(updateFirstListCheck(e.target.checked));
+        break;
+      case "link":
+        dispatch(updateCoverLinkValue(e.target.value));
         break;
       default:
         dispatch(updateInputValues(e.target.name, e.target.value));

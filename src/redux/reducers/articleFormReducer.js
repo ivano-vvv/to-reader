@@ -96,6 +96,13 @@ export function switchTagLengthErrorStatus() {
   };
 }
 
+const SWITCH_FIRST_LIST_AMOUNT_ERROR = "SWITCH_FIRST_LIST_AMOUNT_ERROR";
+export function switchFirstListAmountError() {
+  return {
+    type: SWITCH_FIRST_LIST_AMOUNT_ERROR,
+  };
+}
+
 let initialState = {
   values: {
     link: "",
@@ -121,19 +128,9 @@ let initialState = {
 export default function articleFormReducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_LINK_VALUE:
-      let newLinkValue = action.value;
-
-      if (
-        !newLinkValue.startsWith("http://") &&
-        !newLinkValue.startsWith("https://") &&
-        newLinkValue !== ""
-      ) {
-        newLinkValue = "https://" + newLinkValue;
-      }
-
       return {
         ...state,
-        values: { ...state.values, link: newLinkValue },
+        values: { ...state.values, link: action.value },
       };
     case UPDATE_TITLE_VALUE:
       return {
@@ -146,18 +143,9 @@ export default function articleFormReducer(state = initialState, action) {
         values: { ...state.values, desc: action.value },
       };
     case UPDATE_COVER_VALUE:
-      let newCoverValue = action.value;
-
-      if (
-        !newCoverValue.startsWith("http://") &&
-        !newCoverValue.startsWith("https://") &&
-        newCoverValue !== ""
-      ) {
-        newCoverValue = "https://" + newCoverValue;
-      }
       return {
         ...state,
-        values: { ...state.values, cover: newCoverValue },
+        values: { ...state.values, cover: action.value },
       };
     case UPDATE_FIRST_LIST_CHECK_VALUE:
       if (getFirstListItemsAmountAPI() >= 6 && action.value) {
@@ -224,6 +212,14 @@ export default function articleFormReducer(state = initialState, action) {
         onChangeErrors: {
           ...state.onChangeErrors,
           tags_maxLength: !state.onChangeErrors.tags_maxLength,
+        },
+      };
+    case SWITCH_FIRST_LIST_AMOUNT_ERROR:
+      return {
+        ...state,
+        onChangeErrors: {
+          ...state.onChangeErrors,
+          firstList_maxItems: !state.onChangeErrors.firstList_maxItems,
         },
       };
     default:

@@ -65,6 +65,10 @@
   top: 25px;
 }
 
+.article-form__error-notification_tags {
+  right: 338px;
+}
+
 /* inputs */
 
 .article-form__link-input {

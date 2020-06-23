@@ -5,13 +5,29 @@ import {
   setTitleLengthErrorStatus,
   setDescLengthErrorStatus,
   switchTagLengthErrorStatus,
+  switchFirstListAmountError,
 } from "../redux/reducers/articleFormReducer";
+import { getFirstListItemsAmountAPI } from "../DAL/storageAPI";
 
 export function updateLinkValue(value) {
   return (dispatch) => {
     dispatch(setLinkErrorStatus(false));
-    dispatch(updateInputValues("link", value));
+    dispatch(updateInputValues("link", normalizeValue(value)));
   };
+
+  function normalizeValue(value) {
+    let newLinkValue = value;
+
+    if (
+      !newLinkValue.startsWith("http://") &&
+      !newLinkValue.startsWith("https://") &&
+      newLinkValue !== ""
+    ) {
+      newLinkValue = "https://" + newLinkValue;
+    }
+
+    return newLinkValue;
+  }
 }
 
 export function updateTitleValue(value) {
@@ -39,13 +55,33 @@ export function updateDescValue(value) {
   };
 }
 
+export function updateCoverLinkValue(value) {
+  return (dispatch) => {
+    dispatch(updateInputValues("cover", normalizeValue(value)));
+  };
+
+  function normalizeValue(value) {
+    let newCoverValue = value;
+
+    if (
+      !newCoverValue.startsWith("http://") &&
+      !newCoverValue.startsWith("https://") &&
+      newCoverValue !== ""
+    ) {
+      newCoverValue = "https://" + newCoverValue;
+    }
+
+    return newCoverValue;
+  }
+}
+
 export function updateTagsInputValue(value) {
   return (dispatch) => {
     let tags_tagList = value.split(",").map((t) => t.trim());
     if (tags_tagList[tags_tagList.length - 1].length === 16) {
       dispatch(updateInputValues("tags", normalizeValue(value + ", ")));
       dispatch(switchTagLengthErrorStatus());
-      setTimeout(dispatch(switchTagLengthErrorStatus()), 3000);
+      setTimeout(dispatch, 2000, switchTagLengthErrorStatus());
     } else {
       dispatch(updateInputValues("tags", normalizeValue(value)));
     }
@@ -77,6 +113,11 @@ export function updateTagsInputValue(value) {
 }
 
 export function updateFirstListCheck(checked) {
+  if (getFirstListItemsAmountAPI() >= 6 && checked) {
+    return (dispatch) => {
+      dispatch(switchFirstListAmountError());
+    };
+  }
   return (dispatch) => {
     dispatch(updateInputValues("firstListCheck", checked));
   };
