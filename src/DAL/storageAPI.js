@@ -38,7 +38,7 @@ const storageAPI = {
   },
   switchFirstListArticleStatus(id, filter) {
     let articlesPack = this._store(),
-      firstListItemsAmount = this._firstList.length,
+      firstListItemsAmount = this.getFirstListItemsAmount(),
       articleIndex = this._getArticleIndex(id);
 
     if (articlesPack[articleIndex].isFirstList) {
@@ -200,11 +200,17 @@ const storageAPI = {
     return this._store();
   },
   getFirstListItemsAmount() {
-    return this._firstList.length;
+    return this._firstList().length;
   },
-  _store: () => JSON.parse(localStorage.getItem("articlesPack")),
-  _tags: () => JSON.parse(localStorage.getItem("tags")),
-  _firstList: () => this._store().filter((a) => a.isFirstList),
+  _store() {
+    return JSON.parse(localStorage.getItem("articlesPack"));
+  },
+  _tags() {
+    return JSON.parse(localStorage.getItem("tags"));
+  },
+  _firstList() {
+    return this._store().filter((a) => a.isFirstList);
+  },
   _getArticleIndex(id) {
     let articles = this._store();
     for (let i = 0; i < articles.length; i++) {
