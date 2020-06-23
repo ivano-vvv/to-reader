@@ -202,12 +202,6 @@ const storageAPI = {
   getFirstListItemsAmount() {
     return this._firstList().length;
   },
-  getArticleData(id) {
-    let i = this._getArticleIndex(id),
-      articlesPack = this._store();
-
-    return articlesPack[i];
-  },
   _store() {
     return JSON.parse(localStorage.getItem("articlesPack"));
   },
@@ -256,9 +250,5 @@ export function deleteArticleAPI(articleId) {
 }
 
 export function getFirstListItemsAmountAPI() {
-  return storageAPI.getFirstListItemsAmount();
-}
-
-export function getArticleDataAPI(id) {
-  return storageAPI.getArticleData(id);
+  return storageAPI;
 }
