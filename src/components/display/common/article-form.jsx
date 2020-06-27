@@ -167,17 +167,35 @@ export default function ArticleForm(props) {
           onChange={props.onChange}
         ></Textarea>
       </div>
-      <div className="article-form__buttons-block">
-        <button className="article-form__button article-form__button_cancel">
-          Отменить
-        </button>
+      <div
+        className={
+          props.type === "edit"
+            ? "article-form__buttons-block article-form__buttons-block_edit"
+            : "article-form__buttons-block "
+        }
+      >
         <button
-          className={buttonClassConstructor(stopSubmitError)}
-          type="submit"
-          disabled={stopSubmitError}
+          className={
+            props.type === "edit"
+              ? "article-form__button article-form__button_delete"
+              : "hidden"
+          }
+          onClick={props.onDeleteClick}
         >
-          Сохранить статью
+          Удалить статью
         </button>
+        <div className="article-form__buttons-block-main">
+          <button className="article-form__button article-form__button_cancel">
+            Отменить
+          </button>
+          <button
+            className={buttonClassConstructor(stopSubmitError)}
+            type="submit"
+            disabled={stopSubmitError}
+          >
+            Сохранить статью
+          </button>
+        </div>
       </div>
     </form>
   );

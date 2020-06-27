@@ -93,7 +93,7 @@ const storageAPI = {
   },
   saveArticle(articleData) {
     if (articleData.tags) {
-      let newTags = createNewTags(articleData.tags, this._tags());
+      let newTags = this._createNewTags(articleData.tags, this._tags());
 
       this._saveTags(newTags);
     }
@@ -105,8 +105,9 @@ const storageAPI = {
       title: articleData.title,
       desc: articleData.desc,
       cover: articleData.cover,
+      isFirstList: articleData.isFirstList,
       tags: articleData.tags
-        ? getTagsId(this._tags().tags, articleData.tags)
+        ? this._getTagsId(this._tags().tags, articleData.tags)
         : null,
     };
 
@@ -118,85 +119,36 @@ const storageAPI = {
     });
     this._saveStore(tempArticlesState);
     return this._store();
-
-    // functions
-
-    function createNewTags(tagsStr, tagsState) {
-      let newTags = createTagObjects(
-        filterNewTags(formateTags(tagsStr), tagsState.tags),
-        tagsState
-      );
-
-      return { ...tagsState, tags: [...tagsState.tags, ...newTags] };
-
-      // functions
-
-      function formateTags(str) {
-        return str.split(",").map((t) => t.trim());
-      }
-
-      function filterNewTags(tags, state) {
-        if (state.length === 0) return tags;
-
-        return tags.filter((t) => {
-          if (compareTags(t, state)) {
-            return false;
-          } else {
-            return true;
-          }
-        });
-
-        function compareTags(newTag, state) {
-          for (let i = 0; i < state.length; i++) {
-            if (newTag === state[i].value) {
-              return true;
-            }
-          }
-
-          return false;
-        }
-      }
-
-      function setColor(colors) {
-        let i = Math.floor(Math.random() * 10);
-        return colors[i];
-      }
-
-      function createTagObjects(newTags, tagsState) {
-        let id = Math.round(Math.random() * 1000000);
-        return newTags.map((t) => {
-          id++;
-          return {
-            id: id,
-            value: t,
-            color: setColor(tagsState.colors),
-          };
-        });
-      }
-    }
-
-    function getTagsId(tags, tagsStr) {
-      let result = [],
-        tagArray = formateTags(tagsStr);
-
-      tagArray.map((t) => {
-        for (let i = 0; i < tags.length; i++) {
-          if (t === tags[i].value) {
-            result.push(tags[i].id);
-          }
-        }
-      });
-
-      return result;
-
-      function formateTags(str) {
-        return str.split(",").map((t) => t.trim());
-      }
-    }
   },
   deleteArticle(articleId) {
+    this._deleteTagsOfArticle(articleId);
     let newState = this._store().filter((i) => i.id !== articleId);
     this._saveStore(newState);
+    return this._store();
+  },
+  updateArticleData(id, data) {
+    let i = this._getArticleIndex(id),
+      articlesPack = this._store();
+
+    if (data.tags) {
+      this._deleteTagsOfArticle(id);
+
+      let newTags = this._createNewTags(articlesPack.tags, this._tags());
+
+      this._saveTags(newTags);
+    }
+
+    articlesPack[i].cover = data.cover;
+    articlesPack[i].title = data.title;
+    articlesPack[i].desc = data.desc;
+    articlesPack[i].tags = data.tags
+      ? this._getTagsId(this._tags().tags, data.tags)
+      : null;
+    articlesPack[i].isFirstList = data.isFirstList;
+    articlesPack[i].isRead = data.isRead;
+
+    this._saveStore(articlesPack);
+
     return this._store();
   },
   getFirstListItemsAmount() {
@@ -208,11 +160,93 @@ const storageAPI = {
 
     return articlesPack[i];
   },
+  getTagNameByID(id) {
+    let result = [];
+    for (let t of this._tags().tags) {
+      if (t.id === id) {
+        result.push(t.value);
+      }
+    }
+    return result;
+  },
   _store() {
     return JSON.parse(localStorage.getItem("articlesPack"));
   },
   _tags() {
     return JSON.parse(localStorage.getItem("tags"));
+  },
+  _createNewTags(tagsStr, tagsState) {
+    if (!tagsStr) return tagsState;
+
+    let newTags = createTagObjects(
+      filterNewTags(formateTags(tagsStr), tagsState.tags),
+      tagsState
+    );
+
+    return { ...tagsState, tags: [...tagsState.tags, ...newTags] };
+
+    // functions
+
+    function formateTags(str) {
+      return str.split(",").map((t) => t.trim());
+    }
+
+    function filterNewTags(tags, state) {
+      if (state.length === 0) return tags;
+
+      return tags.filter((t) => {
+        if (compareTags(t, state)) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+
+      function compareTags(newTag, state) {
+        for (let i = 0; i < state.length; i++) {
+          if (newTag === state[i].value) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+    }
+
+    function setColor(colors) {
+      let i = Math.floor(Math.random() * 10);
+      return colors[i];
+    }
+
+    function createTagObjects(newTags, tagsState) {
+      let id = Math.round(Math.random() * 1000000);
+      return newTags.map((t) => {
+        id++;
+        return {
+          id: id,
+          value: t,
+          color: setColor(tagsState.colors),
+        };
+      });
+    }
+  },
+  _getTagsId(tags, tagsStr) {
+    let result = [],
+      tagArray = formateTags(tagsStr);
+
+    tagArray.map((t) => {
+      for (let i = 0; i < tags.length; i++) {
+        if (t === tags[i].value) {
+          result.push(tags[i].id);
+        }
+      }
+    });
+
+    return result;
+
+    function formateTags(str) {
+      return str.split(",").map((t) => t.trim());
+    }
   },
   _firstList() {
     return this._store().filter((a) => a.isFirstList);
@@ -228,6 +262,36 @@ const storageAPI = {
   },
   _saveTags(tags) {
     localStorage.setItem("tags", JSON.stringify(tags));
+  },
+  _deleteTagsOfArticle(id) {
+    let articlesPack = this._store(),
+      tags = articlesPack[this._getArticleIndex(id)].tags,
+      resultTagList = this._tags().tags,
+      tagsStorage = this._tags();
+
+    tags = tags.filter((t) => {
+      for (let a of articlesPack) {
+        if (a.tags) {
+          if (a.tags.includes(t) && a.id !== id) {
+            debugger;
+            return false;
+          }
+        }
+      }
+      debugger;
+      return true;
+    });
+
+    resultTagList = resultTagList.filter((t) => {
+      for (let deletedTag of tags) {
+        if (deletedTag === t.id) {
+          return false;
+        }
+      }
+      return true;
+    });
+
+    this._saveTags({ ...tagsStorage, tags: resultTagList });
   },
 };
 
@@ -261,4 +325,12 @@ export function getFirstListItemsAmountAPI() {
 
 export function getArticleDataAPI(id) {
   return storageAPI.getArticleData(id);
+}
+
+export function getTagNameByIdAPI(id) {
+  return storageAPI.getTagNameByID(id);
+}
+
+export function updateArticleDataAPI(id, data) {
+  return storageAPI.updateArticleData(id, data);
 }

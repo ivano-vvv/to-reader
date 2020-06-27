@@ -103,6 +103,21 @@ export function switchFirstListAmountError() {
   };
 }
 
+const SET_ARTICLE_DATA_FOR_EDIT = "SET_ARTICLE_DATA_FOR_EDIT";
+export function setArticleDataForEdit(data) {
+  return {
+    type: SET_ARTICLE_DATA_FOR_EDIT,
+    data: {
+      link: data.link,
+      title: data.title,
+      desc: data.desc,
+      cover: data.cover,
+      firstListCheck: data.firstListCheck,
+      tags: data.tags,
+    },
+  };
+}
+
 let initialState = {
   values: {
     link: "",
@@ -221,6 +236,28 @@ export default function articleFormReducer(state = initialState, action) {
           ...state.onChangeErrors,
           firstList_maxItems: !state.onChangeErrors.firstList_maxItems,
         },
+      };
+    case SET_ARTICLE_DATA_FOR_EDIT:
+      return {
+        values: {
+          link: action.data.link,
+          title: action.data.title,
+          desc: action.data.desc,
+          cover: action.data.cover,
+          firstListCheck: action.data.firstListCheck,
+          tags: action.data.tags,
+        },
+        touchedErrors: {
+          link_isEmpty: false,
+          title_isEmpty: false,
+        },
+        onChangeErrors: {
+          title_maxLength: false,
+          firstList_maxItems: false,
+          desc_maxLength: false,
+          tags_maxLength: false,
+        },
+        coverForPreview: action.data.cover,
       };
     default:
       return state;

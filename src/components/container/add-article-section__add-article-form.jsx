@@ -5,12 +5,7 @@ import ArticleForm from "../display/common/article-form";
 import {
   updateInputValues,
   clearForm,
-  setLinkErrorStatus,
-  setTitleEmptyErrorStatus,
-  setTitleLengthErrorStatus,
-  setDescLengthErrorStatus,
   updatePreviewCover,
-  switchTagLengthErrorStatus,
 } from "../../redux/reducers/articleFormReducer";
 import {
   updateFirstListCheck,

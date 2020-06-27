@@ -21,6 +21,10 @@
   justify-content: flex-end;
 }
 
+.article-form__buttons-block_edit {
+  justify-content: space-between;
+}
+
 .article-form__desc-block {
   margin-top: 41px;
 }
@@ -111,6 +115,14 @@
   margin-right: 12px;
 }
 
+.article-form__button_delete {
+  color: #cb1f1f;
+  border: 2px solid #cb1f1f;
+  background: #ffffff;
+  padding: 12px 32px;
+  opacity: 60%;
+}
+
 .article-form__button:focus {
   box-shadow: 0px 4px 12px rgba(169, 169, 169, 0.25);
   outline: none;
@@ -141,4 +153,13 @@
 .article-form__button_disabled:active {
   background-color: #979797;
   cursor: default;
+}
+
+.article-form__button_delete:hover {
+  opacity: 1;
+}
+
+.article-form__button_delete:active {
+  background-color: #cb1f1f;
+  color: #dbdbdb;
 }
