@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/to-reader/static/css/main.e2e4c357.chunk.css",
+    "main.js": "/to-reader/static/js/main.cb847de9.chunk.js",
+    "main.js.map": "/to-reader/static/js/main.cb847de9.chunk.js.map",
+    "runtime-main.js": "/to-reader/static/js/runtime-main.a9ac0551.js",
+    "runtime-main.js.map": "/to-reader/static/js/runtime-main.a9ac0551.js.map",
+    "static/js/2.ab8a3adb.chunk.js": "/to-reader/static/js/2.ab8a3adb.chunk.js",
+    "static/js/2.ab8a3adb.chunk.js.map": "/to-reader/static/js/2.ab8a3adb.chunk.js.map",
+    "index.html": "/to-reader/index.html",
+    "precache-manifest.ef50089dbf024e96bc97991e3fe661d2.js": "/to-reader/precache-manifest.ef50089dbf024e96bc97991e3fe661d2.js",
+    "service-worker.js": "/to-reader/service-worker.js",
+    "static/css/main.e2e4c357.chunk.css.map": "/to-reader/static/css/main.e2e4c357.chunk.css.map",
+    "static/js/2.ab8a3adb.chunk.js.LICENSE.txt": "/to-reader/static/js/2.ab8a3adb.chunk.js.LICENSE.txt",
+    "static/media/article-form-section.css": "/to-reader/static/media/closing_cross.bc61ffa1.svg",
+    "static/media/cover-default.svg": "/to-reader/static/media/cover-default.03d2ff55.svg",
+    "static/media/service-button.css": "/to-reader/static/media/isRead-true.bd7173a6.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a9ac0551.js",
+    "static/js/2.ab8a3adb.chunk.js",
+    "static/css/main.e2e4c357.chunk.css",
+    "static/js/main.cb847de9.chunk.js"
+  ]
+}
