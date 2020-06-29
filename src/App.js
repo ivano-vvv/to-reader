@@ -4,7 +4,7 @@ import Header from "./components/display/header";
 import ContentContainer from "./components/container/app__content_class";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import AddingArticle from "./components/display/adding-article";
 import EditPageContainer from "./components/container/app__edit-page";
 
@@ -15,13 +15,18 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Header />
-        <Route path="/home">
-          <ContentContainer />
-        </Route>
-        <Route path="/add">
-          <AddingArticle />
-        </Route>
-        <Route path="/edit" render={(props) => <EditPageContainer {...props} />} />
+        <Switch>
+          <Route path="/add">
+            <AddingArticle />
+          </Route>
+          <Route
+            path="/edit"
+            render={(props) => <EditPageContainer {...props} />}
+          />
+          <Route path="/">
+            <ContentContainer />
+          </Route>
+        </Switch>
       </div>
     </Provider>
   );
