@@ -6,8 +6,8 @@ import {
   updateArticleDataAPI,
   saveTestStoreAPI,
 } from "../../DAL/storageAPI";
-import testArticles from "../test-articles";
-import testTags from "../test-tags";
+import getTestArticles from "../test-articles";
+import getTestTags from "../test-tags";
 
 const SET_ARTICLES = "SET_ARTICLES";
 export function setArticles(articlesPack) {
@@ -68,8 +68,8 @@ const SET_TEST_ARTICLES = "SET_TEST_ARTICLES";
 export function setTestArticles() {
   return {
     type: SET_TEST_ARTICLES,
-    articles: testArticles,
-    tags: testTags,
+    articles: getTestArticles(),
+    tags: getTestTags(),
   };
 }
 

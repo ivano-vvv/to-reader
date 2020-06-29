@@ -38,6 +38,7 @@ export default function Content(props) {
                 tags={a.tags}
                 isFirstList={a.isFirstList}
                 isRead={a.isRead}
+                key={a.id}
               />
             );
           })}

@@ -31,6 +31,8 @@ export default function ArticleCardContainer(props) {
           return tagsState[i];
         }
       }
+
+      return null;
     });
   }
 }

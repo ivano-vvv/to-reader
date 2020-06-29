@@ -19,18 +19,24 @@ const storageAPI = {
     if (filter.isReadList) {
       resultArticlePack = resultArticlePack.filter((a) => {
         if (a.isRead) return true;
+
+        return false;
       });
     }
 
     if (filter.isUnreadList) {
       resultArticlePack = resultArticlePack.filter((a) => {
         if (!a.isRead) return true;
+
+        return false;
       });
     }
 
     if (filter.isFirstList) {
       resultArticlePack = resultArticlePack.filter((a) => {
         if (a.isFirstList) return true;
+
+        return false;
       });
     }
 
@@ -283,13 +289,21 @@ const storageAPI = {
     let result = [],
       tagArray = formateTags(tagsStr);
 
-    tagArray.map((t) => {
+    // tagArray.map((t) => {
+    //   for (let i = 0; i < tags.length; i++) {
+    //     if (t === tags[i].value) {
+    //       result.push(tags[i].id);
+    //     }
+    //   }
+    // });
+
+    for (let t of tagArray) {
       for (let i = 0; i < tags.length; i++) {
         if (t === tags[i].value) {
           result.push(tags[i].id);
         }
       }
-    });
+    }
 
     return result;
 

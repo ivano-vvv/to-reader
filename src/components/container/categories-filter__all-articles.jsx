@@ -1,7 +1,6 @@
 import React from "react";
 import ButtonLink from "../display/common/button-link";
 import {
-  switchOnFirstList,
   clearFilter,
 } from "../../redux/reducers/filterReducer";
 import { useDispatch, useSelector } from "react-redux";

@@ -102,6 +102,7 @@ export default function ArticleForm(props) {
           <label className="article-form__label">Обложка</label>
           <img
             src={props.preview || defaultCoverPreview}
+            alt='Cover Preview'
             className="article-form__cover-preview"
           />
           <div className="article-form__input-block article-form__block">

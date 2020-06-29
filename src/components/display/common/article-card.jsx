@@ -15,6 +15,7 @@ export default function ArticleCard(props) {
         href={props.link}
         className="article-card__cover-container"
         target="_blank"
+        rel="noopener noreferrer"
       >
         <img
           className={"article-card__cover " + coverDisplayClass}
@@ -32,7 +33,12 @@ export default function ArticleCard(props) {
       </a>
       <p className="article-card__desc">{props.desc}</p>
       <div className="article-card__button-block">
-        <a className="article-card__button" href={props.link} target="_blank">
+        <a
+          className="article-card__button"
+          href={props.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Читать
         </a>
         <ServiceButton
@@ -56,10 +62,13 @@ export default function ArticleCard(props) {
       {props.tags ? (
         <div className="article-card__tags-block">
           {props.tags.map((t) => {
+            if (!t) return <div />;
+
             return (
               <Tag
                 value={t.value}
                 color={t.color}
+                key={t.id}
                 position="article-card"
                 type="label"
               />

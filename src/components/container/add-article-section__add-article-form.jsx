@@ -47,7 +47,7 @@ export default function AddArticleFormContainer(props) {
       case "firstListCheck":
         dispatch(updateFirstListCheck(e.target.checked));
         break;
-      case "link":
+      case "cover":
         dispatch(updateCoverLinkValue(e.target.value));
         break;
       default:
@@ -69,6 +69,7 @@ export default function AddArticleFormContainer(props) {
         break;
       case "cover":
         dispatch(updatePreviewCover());
+        break;
       default:
         break;
     }

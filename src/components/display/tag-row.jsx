@@ -18,6 +18,7 @@ export default function TagRow(props) {
             color={t.color}
             value={t.value}
             id={t.id}
+            key={t.id}
           />
         );
       })}

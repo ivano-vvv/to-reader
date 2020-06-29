@@ -16,7 +16,13 @@ class ContentContainer extends Component {
   }
 
   render() {
-    if (!this.props.articlesPack) {
+    debugger;
+    if (
+      this.props.articlesPack.length === 0 &&
+      !this.props.filter.isFirstList &&
+      !this.props.filter.isReadList &&
+      !this.props.filter.isUnreadList
+    ) {
       return <Welcome />;
     } else {
       return <Content articlesPack={this.props.articlesPack} />;
