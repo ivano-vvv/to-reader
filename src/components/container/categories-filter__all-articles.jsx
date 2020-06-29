@@ -16,7 +16,12 @@ export default function AllArticlesSwitcherContainer(props) {
   }
 
   function isFilterActive(filter) {
-    if (filter.tags.length === 0 && !filter.isFirstList && !filter.isReadList) {
+    if (
+      filter.tags.length === 0 &&
+      !filter.isFirstList &&
+      !filter.isReadList &&
+      !filter.isUnreadList
+    ) {
       return false;
     }
 
