@@ -14,3 +14,15 @@
   padding-left: 24px; /* gutter size */
   background-clip: padding-box;
 }
+
+.content__bad-filter {
+  font-family: Jost;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #9e9e9e;
+  width: 334px;
+  margin: 0 auto;
+}

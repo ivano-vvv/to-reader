@@ -6,6 +6,18 @@ import Masonry from "react-masonry-css";
 import ArticleCardContainer from "../container/content__article-card";
 
 export default function Content(props) {
+  if (props.articlesPack.length === 0) {
+    return (
+      <div className="container">
+        <Subheader />
+        <div className="content container">
+          <h2 className="content__bad-filter">
+            Похоже, вы поставили слишком жесткие ограничения: ничего не найдено
+          </h2>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="container">
       <Subheader />

@@ -169,11 +169,60 @@ const storageAPI = {
     }
     return result;
   },
+  saveTestStore(articles, tags) {
+    this._saveStore(articles);
+
+    let tagsStorage = {
+      tags: [...tags],
+      colors: [
+        "red",
+        "purple",
+        "olive",
+        "reddish-brown",
+        "green",
+        "blue",
+        "emerald",
+        "plum",
+        "teal",
+        "brown",
+      ],
+    };
+
+    this._saveTags(tagsStorage);
+    return this._store();
+  },
   _store() {
-    return JSON.parse(localStorage.getItem("articlesPack"));
+    let store = JSON.parse(localStorage.getItem("articlesPack"));
+
+    if (!store) {
+      store = [];
+      this._saveStore(store);
+    }
+    return store;
   },
   _tags() {
-    return JSON.parse(localStorage.getItem("tags"));
+    let tags = JSON.parse(localStorage.getItem("tags"));
+
+    if (!tags) {
+      tags = {
+        tags: [],
+        colors: [
+          "red",
+          "purple",
+          "olive",
+          "reddish-brown",
+          "green",
+          "blue",
+          "emerald",
+          "plum",
+          "teal",
+          "brown",
+        ],
+      };
+      this._saveTags(tags);
+    }
+
+    return tags;
   },
   _createNewTags(tagsStr, tagsState) {
     if (!tagsStr) return tagsState;
@@ -333,4 +382,8 @@ export function getTagNameByIdAPI(id) {
 
 export function updateArticleDataAPI(id, data) {
   return storageAPI.updateArticleData(id, data);
+}
+
+export function saveTestStoreAPI(articles, tags) {
+  return storageAPI.saveTestStore(articles, tags);
 }

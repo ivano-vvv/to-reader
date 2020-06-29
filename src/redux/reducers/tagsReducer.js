@@ -15,6 +15,13 @@ export function createTags(tagsString) {
   };
 }
 
+const SAVE_INITIAL_STATE_TO_STORAGE = "SAVE_INITIAL_STATE_TO_STORAGE";
+export function saveInitialTagsToStorage() {
+  return {
+    type: SAVE_INITIAL_STATE_TO_STORAGE,
+  };
+}
+
 let initialState = {
   tags: [],
   colors: [

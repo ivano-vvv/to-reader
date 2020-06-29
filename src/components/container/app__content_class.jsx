@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSavedArticles } from "../../redux/thunks";
 import Content from "../display/content";
+import Welcome from "../display/welcome";
 
 class ContentContainer extends Component {
   componentDidMount() {
@@ -15,7 +16,11 @@ class ContentContainer extends Component {
   }
 
   render() {
-    return <Content articlesPack={this.props.articlesPack} />;
+    if (!this.props.articlesPack) {
+      return <Welcome />;
+    } else {
+      return <Content articlesPack={this.props.articlesPack} />;
+    }
   }
 }
 

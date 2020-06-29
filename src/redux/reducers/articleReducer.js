@@ -1,11 +1,13 @@
 import {
   saveArticleAPI,
   deleteArticleAPI,
-  getSavedArticlesAPI,
   switchFirstListArticleStatusAPI,
   switchHaveReadListArticleStatusAPI,
   updateArticleDataAPI,
+  saveTestStoreAPI,
 } from "../../DAL/storageAPI";
+import testArticles from "../test-articles";
+import testTags from "../test-tags";
 
 const SET_ARTICLES = "SET_ARTICLES";
 export function setArticles(articlesPack) {
@@ -62,6 +64,15 @@ export function switchReadArticleStatus(id, filter) {
   };
 }
 
+const SET_TEST_ARTICLES = "SET_TEST_ARTICLES";
+export function setTestArticles() {
+  return {
+    type: SET_TEST_ARTICLES,
+    articles: testArticles,
+    tags: testTags,
+  };
+}
+
 let initialState = [];
 
 export default function articlesReducer(state = initialState, action) {
@@ -78,6 +89,8 @@ export default function articlesReducer(state = initialState, action) {
       return switchFirstListArticleStatusAPI(action.id, action.filter);
     case SWITCH_READ_STATUS:
       return switchHaveReadListArticleStatusAPI(action.id, action.filter);
+    case SET_TEST_ARTICLES:
+      return saveTestStoreAPI(action.articles, action.tags);
     default:
       return state;
   }
