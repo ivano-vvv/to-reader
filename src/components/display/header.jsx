@@ -10,7 +10,7 @@ export default function Header(props) {
     <header className="header">
       <div className="header-container container">
         <Link to='/' ><Logotype /></Link>
-        <Link to='/login' className="header-container__login">Вход/регистрация</Link>
+        <Link to='/login' className="header-container__login hidden">Вход/регистрация</Link>
       </div>
     </header>
   );
