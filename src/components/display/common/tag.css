@@ -155,10 +155,6 @@
   margin-right: 16px;
 }
 
-.article-card__tag {
-  margin: 0 16px 16px 0;
-}
-
 .tag-row__tag:last-child {
   margin-right: 20px;
 }
