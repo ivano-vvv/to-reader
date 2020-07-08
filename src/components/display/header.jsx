@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function Header(props) {
   return (
     <header className="header">
-      <div className="header-container container">
+      <div className="header-container">
         <Link to='/' ><Logotype /></Link>
         <Link to='/login' className="header-container__login hidden">Вход/регистрация</Link>
       </div>
