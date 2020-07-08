@@ -333,6 +333,8 @@ const storageAPI = {
       resultTagList = this._tags().tags,
       tagsStorage = this._tags();
 
+    if (!tags) return;
+
     tags = tags.filter((t) => {
       for (let a of articlesPack) {
         if (a.tags) {
