@@ -151,7 +151,7 @@ const storageAPI = {
     articlesPack[i].tags = data.tags
       ? this._getTagsId(this._tags().tags, data.tags)
       : null;
-    articlesPack[i].isFirstList = data.isFirstList;
+    articlesPack[i].isFirstList = data.firstListCheck;
     articlesPack[i].isRead = data.isRead;
 
     this._saveStore(articlesPack);
