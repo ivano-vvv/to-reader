@@ -133,13 +133,14 @@ const storageAPI = {
     return this._store();
   },
   updateArticleData(id, data) {
+    debugger;
     let i = this._getArticleIndex(id),
       articlesPack = this._store();
 
     if (data.tags) {
       this._deleteTagsOfArticle(id);
 
-      let newTags = this._createNewTags(articlesPack.tags, this._tags());
+      let newTags = this._createNewTags(data.tags, this._tags());
 
       this._saveTags(newTags);
     }
