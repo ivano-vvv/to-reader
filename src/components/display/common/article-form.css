@@ -116,11 +116,10 @@
 }
 
 .article-form__button_delete {
-  color: #cb1f1f;
-  border: 2px solid #cb1f1f;
+  color: #ce8383;
+  border: 2px solid #ce8383;
   background: #ffffff;
   padding: 12px 32px;
-  opacity: 60%;
 }
 
 .article-form__button:focus {
@@ -156,7 +155,8 @@
 }
 
 .article-form__button_delete:hover {
-  opacity: 1;
+  color: #cb1f1f;
+  border: 2px solid #cb1f1f;
 }
 
 .article-form__button_delete:active {
