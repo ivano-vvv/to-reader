@@ -5,8 +5,8 @@ import ContentContainer from "./components/container/app__content_class";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import AddingArticle from "./components/display/adding-article";
 import EditPageContainer from "./components/container/app__edit-page";
+import AddPageContainer from "./components/container/app__add-page-container";
 
 window.store = store;
 
@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/add">
-            <AddingArticle />
+            <AddPageContainer />
           </Route>
           <Route
             path="/edit"
