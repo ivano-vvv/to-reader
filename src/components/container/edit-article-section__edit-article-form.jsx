@@ -109,6 +109,6 @@ export default function EditArticleFormContainer(props) {
   );
 
   function returnToHome() {
-    history.push("/home");
+    history.push("/");
   }
 }

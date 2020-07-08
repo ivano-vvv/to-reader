@@ -133,7 +133,6 @@ const storageAPI = {
     return this._store();
   },
   updateArticleData(id, data) {
-    debugger;
     let i = this._getArticleIndex(id),
       articlesPack = this._store();
 
