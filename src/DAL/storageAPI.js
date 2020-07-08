@@ -144,6 +144,7 @@ const storageAPI = {
       this._saveTags(newTags);
     }
 
+    articlesPack[i].link = data.link;
     articlesPack[i].cover = data.cover;
     articlesPack[i].title = data.title;
     articlesPack[i].desc = data.desc;
