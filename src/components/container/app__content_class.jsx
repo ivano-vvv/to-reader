@@ -16,7 +16,6 @@ class ContentContainer extends Component {
   }
 
   render() {
-    debugger;
     if (
       this.props.articlesPack.length === 0 &&
       !this.props.filter.isFirstList &&

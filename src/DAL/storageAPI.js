@@ -337,12 +337,10 @@ const storageAPI = {
       for (let a of articlesPack) {
         if (a.tags) {
           if (a.tags.includes(t) && a.id !== id) {
-            debugger;
             return false;
           }
         }
       }
-      debugger;
       return true;
     });
 
