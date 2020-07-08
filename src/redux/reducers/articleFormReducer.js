@@ -112,7 +112,7 @@ export function setArticleDataForEdit(data) {
       title: data.title,
       desc: data.desc,
       cover: data.cover,
-      firstListCheck: data.firstListCheck,
+      firstListCheck: data.isFirstList,
       tags: data.tags,
     },
   };
