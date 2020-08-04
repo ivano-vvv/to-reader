@@ -1,6 +1,6 @@
 # To Reader
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/16388837-dbad-4176-b2c6-ff9da391ae98/deploy-status)](https://app.netlify.com/sites/to-reader/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/16388837-dbad-4176-b2c6-ff9da391ae98/deploy-status)](https://to-reader.netlify.app/)
 
 To Reader is an application for saving and storing articles. All in one place.
 
